@@ -1,0 +1,15 @@
+node_modules
+dist
+dist-ssr
+.git
+coverage
+*.log
+npm-debug.log*
+.env.local
+.env.*.local
+.vscode
+.idea
+*.code-workspace
+.DS_Store
+Thumbs.db
+*.tsbuildinfo

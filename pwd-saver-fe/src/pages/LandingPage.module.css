@@ -1,0 +1,130 @@
+.page {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 60vh;
+  background: var(--gradient-accent);
+  filter: blur(120px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.header {
+  position: relative;
+  padding: var(--space-5) var(--space-7);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  letter-spacing: -0.01em;
+}
+
+.hero {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 42rem;
+  padding: var(--space-6) var(--space-7) var(--space-8);
+  gap: var(--space-4);
+}
+
+.eyebrow {
+  color: var(--color-accent-to);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.primaryLink {
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  background: var(--gradient-accent);
+  color: #0b0e17;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast);
+}
+
+.primaryLink:hover {
+  transform: translateY(-2px);
+}
+
+.secondaryLink {
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.secondaryLink:hover {
+  border-color: var(--color-accent);
+  background: rgba(139, 107, 255, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: var(--space-5) var(--space-6);
+  }
+
+  .hero {
+    padding: var(--space-6) var(--space-6) var(--space-7);
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding: var(--space-4);
+  }
+
+  .hero {
+    padding: var(--space-5) var(--space-4) var(--space-6);
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primaryLink,
+  .secondaryLink {
+    min-height: var(--tap-target-min);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+credential:
+  encryption:
+    key: dGVzdC1vbmx5LTI1Ni1iaXQta2V5LWZvci1qdW5pdCE=
+
+cors:
+  allowed-origins: http://allowed.example.com
+
+password:
+  policy:
+    max-failed-login-attempts: 3
+  description:
+    max-length: 1000

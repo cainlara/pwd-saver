@@ -1,0 +1,31 @@
+target/**
+
+*.iml
+.env
+.env.*
+!.env.example
+*.log
+
+# Editors
+*.vscode
+*.code-workspace
+.idea/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# Test/coverage
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
