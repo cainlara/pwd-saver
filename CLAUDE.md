@@ -38,7 +38,7 @@ docker compose down                  # stop + remove containers, keep db volume
 docker compose down -v               # also delete the Postgres data volume
 ```
 
-- Frontend: <http://localhost:8081> · Backend: <http://localhost:8080> (health: `/actuator/health`)
+- Frontend: <http://localhost:8080> · Backend: <http://localhost:9090> (health: `/actuator/health`)
 - All compose config comes from `.env` at this root (see `.env.example` for every variable). Key ones:
   - `CREDENTIAL_ENCRYPTION_KEY` — base64 256-bit AES key, **required, no default**, used by the backend to encrypt/decrypt vault passwords
   - `VITE_API_BASE_URL` — absolute backend URL the *browser* calls — must be reachable from the host machine, not just the Docker network (it gets baked into the frontend container's runtime `env-config.js`, not the build)

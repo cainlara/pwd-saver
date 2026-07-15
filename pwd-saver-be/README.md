@@ -5,15 +5,6 @@ third-party credentials (username/password pairs with optional URL/description),
 full update history and soft delete. Built with Spring Boot (Java 25, Maven) and
 PostgreSQL.
 
-See [specs/001-password-manager/](specs/001-password-manager/) for the full feature
-specification, plan, data model, API contract, and validation guide:
-
-- [spec.md](specs/001-password-manager/spec.md) — feature requirements
-- [plan.md](specs/001-password-manager/plan.md) — technical design
-- [data-model.md](specs/001-password-manager/data-model.md) — entities
-- [contracts/openapi.yaml](specs/001-password-manager/contracts/openapi.yaml) — API contract
-- [quickstart.md](specs/001-password-manager/quickstart.md) — full setup and validation walkthrough
-
 ## Quick start
 
 ```bash
