@@ -87,6 +87,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(authorize -> authorize
             .requestMatchers("/api/v1/auth/register", "/api/v1/auth/login").permitAll()
             .requestMatchers("/actuator/health", "/actuator/health/**", "/actuator/prometheus").permitAll()
+            .requestMatchers("/scalar", "/scalar/**", "/v3/api-docs", "/v3/api-docs/**").permitAll()
             .anyRequest().authenticated());
     return http.build();
   }

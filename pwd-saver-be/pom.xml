@@ -71,6 +71,20 @@
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
 
+    <!-- API documentation: generates the OpenAPI document from @RestController
+         annotations (docs-only module, no bundled UI) and renders it with
+         Scalar's self-hosted, read-only API reference. -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+      <version>2.9.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.scalar.maven</groupId>
+      <artifactId>scalar</artifactId>
+      <version>0.4.4</version>
+    </dependency>
+
     <!-- Observability -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
