@@ -6,6 +6,7 @@ interface CredentialCardProps {
   credential: CredentialEntry;
   onEdit?: (credential: CredentialEntry) => void;
   onDelete?: (credential: CredentialEntry) => void;
+  onViewHistory?: (credential: CredentialEntry) => void;
 }
 
 const URL_SCHEME_PATTERN = /^[a-z][a-z\d+.-]*:/i;
@@ -18,6 +19,7 @@ export function CredentialCard({
   credential,
   onEdit,
   onDelete,
+  onViewHistory,
 }: CredentialCardProps) {
   const [revealed, setRevealed] = useState(false);
   const [urlTooltipVisible, setUrlTooltipVisible] = useState(false);
@@ -87,7 +89,7 @@ export function CredentialCard({
         <p className={styles.description}>{credential.description}</p>
       ) : null}
 
-      {onEdit || onDelete ? (
+      {onEdit || onDelete || onViewHistory ? (
         <div className={styles.actions}>
           {onEdit ? (
             <button
@@ -96,6 +98,15 @@ export function CredentialCard({
               onClick={() => onEdit(credential)}
             >
               Edit
+            </button>
+          ) : null}
+          {onViewHistory ? (
+            <button
+              type="button"
+              className={styles.actionButton}
+              onClick={() => onViewHistory(credential)}
+            >
+              History
             </button>
           ) : null}
           {onDelete ? (

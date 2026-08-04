@@ -32,9 +32,9 @@ From the repository root:
 docker build -t pwd-saver-fe .
 ```
 
+
 If `npm ci` fails with a registry authentication error (`E401`), your
-`package-lock.json` resolves packages through a private npm registry (true
-for this repo's Adobe-internal Artifactory mirror). Pass your local npm
+`package-lock.json` resolves packages through a private npm registry. Pass your local npm
 credentials in as a build secret — they're used only during the build and
 are never stored in the resulting image:
 

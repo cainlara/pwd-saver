@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ConfirmDialog } from '../components/ConfirmDialog';
 import { CredentialCard } from '../components/CredentialCard';
 import { CredentialForm } from '../components/CredentialForm';
+import { CredentialVersionPanel } from '../components/CredentialVersionPanel';
 import { Modal } from '../components/Modal';
 import { ApiError } from '../api/httpClient';
 import { useAuth } from '../features/auth/useAuth';
@@ -13,6 +14,7 @@ import {
   useDeleteCredential,
   useUpdateCredential,
 } from '../features/credentials/useCredentials';
+import { useCredentialVersions } from '../features/credentials/useCredentialVersions';
 import styles from './CredentialListPage.module.css';
 
 export function CredentialListPage() {
@@ -28,6 +30,13 @@ export function CredentialListPage() {
   const [deletingCredential, setDeletingCredential] =
     useState<CredentialEntry | null>(null);
   const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [selectedCredentialId, setSelectedCredentialId] = useState<
+    string | null
+  >(null);
+  const selectedCredential =
+    data?.find((credential) => credential.id === selectedCredentialId) ??
+    null;
+  const credentialVersions = useCredentialVersions(selectedCredentialId);
 
   async function handleSignOut() {
     await logout();
@@ -66,7 +75,13 @@ export function CredentialListPage() {
   }
 
   return (
-    <div className={styles.page}>
+    <div
+      className={
+        selectedCredential
+          ? `${styles.page} ${styles.pageWithPanel}`
+          : styles.page
+      }
+    >
       <header className={styles.header}>
         <span className={styles.logo}>Pwd Saver</span>
         <div className={styles.headerRight}>
@@ -124,6 +139,9 @@ export function CredentialListPage() {
                 credential={credential}
                 onEdit={setEditingCredential}
                 onDelete={setDeletingCredential}
+                onViewHistory={(selected) =>
+                  setSelectedCredentialId(selected.id)
+                }
               />
             ))}
           </div>
@@ -161,6 +179,18 @@ export function CredentialListPage() {
           error={deleteError}
           onConfirm={handleDelete}
           onCancel={handleCancelDelete}
+        />
+      ) : null}
+
+      {selectedCredential ? (
+        <CredentialVersionPanel
+          key={selectedCredential.id}
+          credential={selectedCredential}
+          versions={credentialVersions.data}
+          isLoading={credentialVersions.isLoading}
+          isError={credentialVersions.isError}
+          error={credentialVersions.error}
+          onClose={() => setSelectedCredentialId(null)}
         />
       ) : null}
     </div>
