@@ -45,6 +45,20 @@ export function CredentialVersionPanel({
     });
   }
 
+  const allRevealed =
+    versions !== undefined &&
+    versions.length > 0 &&
+    revealedVersionIds.size === versions.length;
+
+  function handleToggleAll() {
+    if (!versions) {
+      return;
+    }
+    setRevealedVersionIds(
+      allRevealed ? new Set() : new Set(versions.map((v) => v.versionId)),
+    );
+  }
+
   return (
     <aside
       className={styles.panel}
@@ -75,6 +89,19 @@ export function CredentialVersionPanel({
             ? error.message
             : "We could not load this credential's version history. Please try again."}
         </p>
+      ) : null}
+
+      {!isLoading && !isError && versions && versions.length > 0 ? (
+        <div className={styles.toolbar}>
+          <button
+            type="button"
+            className={styles.toggleAllButton}
+            onClick={handleToggleAll}
+            aria-label={allRevealed ? 'Hide all passwords' : 'Reveal all passwords'}
+          >
+            {allRevealed ? 'Hide all' : 'Reveal all'}
+          </button>
+        </div>
       ) : null}
 
       {!isLoading && !isError && versions ? (

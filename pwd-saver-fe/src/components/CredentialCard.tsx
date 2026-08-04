@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import type { CredentialEntry } from '../features/credentials/api';
+import { CheckIcon } from './icons/CheckIcon';
+import { CopyIcon } from './icons/CopyIcon';
+import { EyeIcon } from './icons/EyeIcon';
+import { EyeOffIcon } from './icons/EyeOffIcon';
 import styles from './CredentialCard.module.css';
 
 interface CredentialCardProps {
@@ -73,15 +77,23 @@ export function CredentialCard({
           onClick={() => setRevealed((current) => !current)}
           aria-label={revealed ? 'Hide password' : 'Reveal password'}
         >
-          {revealed ? 'Hide' : 'Reveal'}
+          {revealed ? (
+            <EyeOffIcon className={styles.buttonIcon} />
+          ) : (
+            <EyeIcon className={styles.buttonIcon} />
+          )}
         </button>
         <button
           type="button"
           className={styles.revealButton}
           onClick={handleCopy}
-          aria-label="Copy password"
+          aria-label={copied ? 'Copied' : 'Copy password'}
         >
-          {copied ? 'Copied' : 'Copy'}
+          {copied ? (
+            <CheckIcon className={styles.buttonIcon} />
+          ) : (
+            <CopyIcon className={styles.buttonIcon} />
+          )}
         </button>
       </div>
 

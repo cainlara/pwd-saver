@@ -8,12 +8,9 @@ FROM node:22-alpine AS build
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-# Uses --mount=type=secret so a private npm registry's credentials (e.g. an
-# .npmrc referenced by `docker build --secret id=npmrc,src=$HOME/.npmrc`)
-# are available only for this instruction and never persisted in any image
-# layer. Not required when package-lock.json resolves entirely against the
-# public npm registry.
-RUN --mount=type=secret,id=npmrc,target=/root/.npmrc npm ci
+# package-lock.json resolves entirely against the public npm registry, so
+# no registry credentials are needed here.
+RUN npm ci
 
 COPY . .
 
