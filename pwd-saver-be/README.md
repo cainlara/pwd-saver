@@ -23,8 +23,7 @@ Once the app is running, open `http://localhost:9090/scalar` (adjust the port to
 covering every endpoint. It's read-only documentation — it renders the OpenAPI
 document generated live from the running app (`/v3/api-docs`), so it always reflects
 the current API with no separate document to keep in sync, and it's reachable without
-logging in. See [specs/001-scalar-api-docs/](specs/001-scalar-api-docs/) for the
-feature spec and design decisions behind it.
+logging in.
 
 ## Running the tests
 
