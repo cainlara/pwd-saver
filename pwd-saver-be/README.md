@@ -16,6 +16,16 @@ mvn spring-boot:run
 See [quickstart.md](specs/001-password-manager/quickstart.md) for the full set of
 environment variables and a curl-based walkthrough of every feature.
 
+## API Documentation
+
+Once the app is running, open `http://localhost:9090/scalar` (adjust the port to
+`SERVER_PORT` if you've overridden it) for an interactive, self-hosted API reference
+covering every endpoint. It's read-only documentation — it renders the OpenAPI
+document generated live from the running app (`/v3/api-docs`), so it always reflects
+the current API with no separate document to keep in sync, and it's reachable without
+logging in. See [specs/001-scalar-api-docs/](specs/001-scalar-api-docs/) for the
+feature spec and design decisions behind it.
+
 ## Running the tests
 
 ```bash

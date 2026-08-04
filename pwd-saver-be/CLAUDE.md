@@ -93,6 +93,22 @@ unknown identifier, disabled, and locked accounts all return the *same* 401 resp
 (no information leak about which case applies) — see `data-model.md`'s validation
 rules for `UserAccount`.
 
+### API documentation
+
+An interactive, self-hosted API reference (Scalar) is served at `/scalar`,
+rendering an OpenAPI document generated at runtime from the `@RestController`
+classes themselves (`springdoc-openapi-starter-webmvc-api`, exposed at
+`/v3/api-docs`) rather than from a hand-maintained contract file — both paths
+are publicly reachable (no login) and read-only (no live "try it" request
+execution; see `application.yml`'s `scalar.*`/`springdoc.*` properties and
+`SecurityConfig`'s `permitAll()` list). **Note**: this is a deliberate
+divergence from the "Contract-First API Design" principle described below,
+which names `specs/001-password-manager/contracts/openapi.yaml` as the source
+of truth — that file does not actually exist anywhere in this repository (see
+`specs/001-scalar-api-docs/research.md`, Decision 0); until/unless it's
+created, the generated `/v3/api-docs` document is this project's only source
+of truth for API shape.
+
 ### CORS
 
 Cross-origin browser access is configured in `SecurityConfig` alongside session

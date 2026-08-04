@@ -38,6 +38,17 @@ password:
   description:
     max-length: 1000
 
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+
+scalar:
+  enabled: true
+  path: /scalar
+  url: /v3/api-docs
+  hide-client-button: true
+  hide-test-request-button: true
+
 management:
   endpoints:
     web:
