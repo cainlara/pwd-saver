@@ -59,8 +59,8 @@ running together.
 
 3. Open the app:
 
-   - Frontend: <http://localhost:8081>
-   - Backend API: <http://localhost:8080> (health check at
+   - Frontend: <http://localhost:8080>
+   - Backend API: <http://localhost:9090> (health check at
      `/actuator/health`)
 
 4. Check status / logs:
