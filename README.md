@@ -61,7 +61,7 @@ running together.
 
    - Frontend: <http://localhost:8080>
    - Backend API: <http://localhost:9090> (health check at
-     `/actuator/health`)
+     `/actuator/health`, Open API documentation at `/scalar`)
 
 4. Check status / logs:
 
